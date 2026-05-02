@@ -24,6 +24,12 @@
     "test": "npm run test"
   },
   "dependencies": {
-    "graphql": "^16.13.2"
+    "@apollo/server": "^4.13.0",
+    "body-parser": "^2.2.2",
+    "cors": "^2.8.6",
+    "express": "^4.22.1",
+    "graphql": "^16.13.2",
+    "graphql-http": "^1.22.4",
+    "ruru": "^2.0.0"
   }
 }
