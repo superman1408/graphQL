@@ -1,0 +1,29 @@
+{
+  "name": "poweredby_graphql",
+  "version": "1.0.0",
+  "description": "graphql query server",
+  "keywords": [
+    "graphql",
+    "stack",
+    "query",
+    "mutation"
+  ],
+  "homepage": "https://github.com/superman1408/graphQL#readme",
+  "bugs": {
+    "url": "https://github.com/superman1408/graphQL/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/superman1408/graphQL.git"
+  },
+  "license": "MIT",
+  "author": "Pratik Kumar",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "dependencies": {
+    "graphql": "^16.13.2"
+  }
+}
