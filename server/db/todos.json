@@ -1201,9 +1201,23 @@
   },
   {
     "id": 201,
-    "title": "Learn Mutation",
-    "description": "Testing variable input",
+    "title": "Learn GraphQL",
+    "description": "Practice mutation",
     "completed": false,
     "userId": 1
+  },
+  {
+    "id": 202,
+    "title": "Learn GraphQL",
+    "description": "Practice mutation",
+    "completed": false,
+    "userId": 2
+  },
+  {
+    "id": 203,
+    "title": "Learn GraphQL",
+    "description": "Practice mutation",
+    "completed": false,
+    "userId": 3
   }
 ]

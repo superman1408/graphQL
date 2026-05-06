@@ -1,8 +1,6 @@
-import { create } from 'domain';
 import { TODOS } from '../db/todos.js';
 import { USERS } from '../db/users.js';
 import fs from 'fs';
-import path from 'path';
 
 
 
@@ -14,8 +12,8 @@ export const RESOLVERS = {
     getUser: (parent, { id }) => {//linear search for user by id
       return USERS.find(user => user.id === parseInt(id));
     },
-    getTodosByUserId: (parent, { id }) => {
-      return TODOS.filter(todo => todo.userId === parseInt(id));
+    getTodosByUserId: (parent, { userId }) => {
+      return TODOS.filter(todo => todo.userId === parseInt(userId));
     },
   },
 
@@ -30,8 +28,11 @@ export const RESOLVERS = {
         userId: parseInt(userId) // Ensure userId is an integer
       };
       TODOS.push(newTodo);
+
+      const todosPath = new URL('../db/todos.json', import.meta.url);
+
       fs.writeFileSync(
-        './db/todos.json',
+        todosPath,
         JSON.stringify(TODOS, null, 2)
       );
       return newTodo;
@@ -44,8 +45,10 @@ export const RESOLVERS = {
         email
       };
       USERS.push(newUser);
+
+      const usersPath = new URL('../db/users.json', import.meta.url);
       fs.writeFileSync(
-        './db/users.json',
+        usersPath,
         JSON.stringify(USERS, null, 2)
       );
       return newUser;
@@ -67,3 +70,34 @@ export const RESOLVERS = {
   }
 };
 
+
+
+
+// mutation {
+//   createTodo(
+//     title: "Learn GraphQL"
+//     description: "Practice mutation"
+//     completed: false
+//     userId: "3"
+//   ) {
+//     id
+//     title
+//     completed
+//     user {
+//       name
+//     }
+//   }
+// }
+
+
+
+// mutation {
+//   createUser(
+//     name: "Rahul"
+//     email: "rahul@test.com"
+//   ) {
+//     id
+//     name
+//     email
+//   }
+// }
