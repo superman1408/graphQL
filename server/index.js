@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import bodyParser from 'body-parser';
+// import bodyParser from 'body-parser';
 
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
@@ -42,5 +42,5 @@ app.get('/', (req, res) => {
 
 // Server is running at http://localhost:4000
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log(`🚀 Server ready at http://localhost:${port}/graphql`);;
 });

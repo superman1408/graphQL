@@ -3,10 +3,10 @@ export const TYPEDEFS = `
         id: ID!
         name: String!
         email: String!
-        todos: [TODO]
+        todos: [Todo]
     }
 
-    type TODO {
+    type Todo {
         id: ID!
         title: String!
         description: String
@@ -15,9 +15,23 @@ export const TYPEDEFS = `
     }
 
     type Query {
-        getTodos: [TODO]
+        getTodos: [Todo]
         getUsers: [User]
         getUser(id: ID!): User
-        getTodoByUserId(id: ID!): [TODO]
+        getTodosByUserId(userId: ID!): [Todo]
+    }
+
+    type Mutation {
+        createTodo(
+            title: String!
+            description: String
+            completed: Boolean!
+            userId: ID!
+        ): Todo
+        createUser(
+            name: String!
+            email: String!
+        ): User
     }
 `;
+
