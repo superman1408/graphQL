@@ -22,16 +22,31 @@ export const TYPEDEFS = `
     }
 
     type Mutation {
+
+    // Mutations for creating, updating, and deleting todos and users
+
         createTodo(
             title: String!
             description: String
             completed: Boolean!
             userId: ID!
         ): Todo
+
         createUser(
             name: String!
             email: String!
         ): User
+
+        updateTodo(
+            id: ID!
+            title: String
+            description: String
+            completed: Boolean
+        ): Todo
+
+        deleteTodo(
+            id: ID!
+        ): Boolean
+
     }
 `;
-
