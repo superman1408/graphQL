@@ -23,8 +23,6 @@ export const TYPEDEFS = `
 
     type Mutation {
 
-    // Mutations for creating, updating, and deleting todos and users
-
         createTodo(
             title: String!
             description: String
