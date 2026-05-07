@@ -3,13 +3,13 @@
     "userId": 1,
     "id": 1,
     "title": "delectus aut autem",
-    "completed": false
+    "completed": true
   },
   {
     "userId": 1,
     "id": 2,
     "title": "quis ut nam facilis et officia qui",
-    "completed": false
+    "completed": true
   },
   {
     "userId": 1,
@@ -1197,27 +1197,6 @@
     "userId": 10,
     "id": 200,
     "title": "ipsam aperiam voluptates qui",
-    "completed": false
-  },
-  {
-    "id": 201,
-    "title": "Learn GraphQL",
-    "description": "Practice mutation",
-    "completed": false,
-    "userId": 1
-  },
-  {
-    "id": 202,
-    "title": "Learn GraphQL",
-    "description": "Practice mutation",
-    "completed": false,
-    "userId": 2
-  },
-  {
-    "id": 203,
-    "title": "Learn GraphQL",
-    "description": "Practice mutation",
-    "completed": false,
-    "userId": 3
+    "completed": true
   }
 ]

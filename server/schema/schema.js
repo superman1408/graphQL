@@ -35,11 +35,8 @@ export const TYPEDEFS = `
             email: String!
         ): User
 
-        updateTodo(
+        toggleTodo(
             id: ID!
-            title: String
-            description: String
-            completed: Boolean
         ): Todo
 
         deleteTodo(

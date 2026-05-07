@@ -53,6 +53,34 @@ export const RESOLVERS = {
       );
       return newUser;
     },
+
+    deleteTodo: (parent, { id }) => {
+      const index = TODOS.findIndex(todo => todo.id === parseInt(id));
+      if (index === -1) {
+        return false; // Todo not found
+      }
+      TODOS.splice(index, 1);
+      const todosPath = new URL('../db/todos.json', import.meta.url);
+      fs.writeFileSync(
+        todosPath,
+        JSON.stringify(TODOS, null, 2)
+      );
+      return true; // Successfully deleted
+    },
+
+    toggleTodo: (parent, { id }) => {
+      const todo = TODOS.find(todo => todo.id === parseInt(id));
+      if (!todo) {
+        return null; // Todo not found
+      }
+      todo.completed = !todo.completed; // Toggle the completed status
+      const todosPath = new URL('../db/todos.json', import.meta.url);
+      fs.writeFileSync(
+        todosPath,
+        JSON.stringify(TODOS, null, 2)
+      );
+      return todo; // Return the updated todo
+    }
   },
 
 

@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import { useQuery } from "@apollo/client/react";
+import { useQuery, useMutation } from "@apollo/client/react";
 
 const GET_TODOS = gql`
   query {
@@ -14,8 +14,24 @@ const GET_TODOS = gql`
   }
 `;
 
+const DELETE_TODO = gql`
+  mutation DeleteTodo($id: ID!) {
+    deleteTodo(id: $id)
+  }
+`;
+
+const TOGGLE_TODO = gql`
+  mutation ToggleTodo($id: ID!) {
+    toggleTodo(id: $id) {
+      id
+    }
+  }
+`;
+
 function App() {
-  const { loading, error, data } = useQuery(GET_TODOS);
+  const { loading, error, data, refetch } = useQuery(GET_TODOS);
+  const [deleteTodo] = useMutation(DELETE_TODO);
+  const [toggleTodo] = useMutation(TOGGLE_TODO);
 
   if (loading) return <h1>Loading...</h1>;
 
@@ -23,6 +39,20 @@ function App() {
     console.log(error);
     return <h1>Error loading data</h1>;
   }
+
+
+  const handleDelete = async (id) => {    console.log("Delete todo with id:", id);
+    // Here you would typically call a mutation to delete the todo from the server
+    // deleteTodo({ variables: { id } });
+    await deleteTodo({ variables: { id } });
+    refetch(); // Refetch the todos after deletion to update the UI
+  };
+
+  const handleToggle = async (id) => {
+    console.log("Toggle todo with id:", id);
+    await toggleTodo({ variables: { id } });
+    refetch(); // Refetch the todos after toggling to update the UI
+  };
 
   return (
     <div style={{ padding: "20px" }}>
@@ -45,6 +75,11 @@ function App() {
           </p>
 
           <p>User: {todo.user?.name}</p>
+
+          <button style={{ marginRight: "10px" }} onClick={() => handleToggle(todo.id)}>
+            Toggle Complete
+          </button>
+          <button onClick={() => handleDelete(todo.id)}>Delete</button>
         </div>
       ))}
     </div>
