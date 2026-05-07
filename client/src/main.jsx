@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { ApolloClient, InMemoryCache, HttpLink } from "@apollo/client";
